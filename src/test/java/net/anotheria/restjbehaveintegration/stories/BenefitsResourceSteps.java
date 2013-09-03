@@ -1,4 +1,4 @@
-package de.cellular.airtime.stories;
+package net.anotheria.restjbehaveintegration.stories;
 
 /**
  * 
