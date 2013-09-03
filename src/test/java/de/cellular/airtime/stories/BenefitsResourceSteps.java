@@ -2,7 +2,7 @@ package de.cellular.airtime.stories;
 
 /**
  * 
- * @author dagafonov
+ * @author daagafonov@gmail.com
  *
  */
 public class BenefitsResourceSteps {

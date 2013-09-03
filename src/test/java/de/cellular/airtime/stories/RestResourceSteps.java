@@ -24,8 +24,9 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.client.filter.LoggingFilter;
 
 /**
+ * JBehave class to support REST resources general behavior.
  * 
- * @author dagafonov
+ * @author daagafonov@gmail.com
  * 
  */
 public class RestResourceSteps {
@@ -54,7 +55,7 @@ public class RestResourceSteps {
 	 * 
 	 */
 	private JSONObject json;
-	
+
 	/**
 	 * 
 	 */
@@ -73,7 +74,7 @@ public class RestResourceSteps {
 		System.out.println(" >>> basePath=" + bp);
 		this.basePath = bp;
 	}
-	
+
 	@Given("I add \"$headerName\" header equal to \"$headerValue\"")
 	public void header(String headerName, String headerValue) {
 		System.out.println(" >>> name=" + headerName + ", value=" + headerName);
@@ -153,7 +154,7 @@ public class RestResourceSteps {
 		String v = (String) getValue(json);
 		variables.put(var, v);
 	}
-	
+
 	@Then("the JSON node \"$node\" should be equal to the remembered \"$var\"")
 	public void nodeShouldBeEqualToVar(String node, String var) throws JSONException {
 		for (String s : node.split("\\.")) {
@@ -192,11 +193,11 @@ public class RestResourceSteps {
 	 * @return
 	 */
 	private String replaceVar(String initial, String var, String value) {
-		System.out.println("initial="+initial);
-		System.out.println("var="+var);
-		System.out.println("value="+value);
+		// System.out.println("initial=" + initial);
+		// System.out.println("var=" + var);
+		// System.out.println("value=" + value);
 		String res = initial.replaceAll("%" + var + "%", value);
-		System.out.println("result="+res);
+		// System.out.println("result=" + res);
 		return res;
 	}
 

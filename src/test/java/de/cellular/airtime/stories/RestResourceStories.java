@@ -14,7 +14,7 @@ import org.jbehave.core.steps.CandidateSteps;
 import org.jbehave.core.steps.InstanceStepsFactory;
 
 /**
- * 
+ * @author daagafonov@gmail.com
  */
 public class RestResourceStories extends JUnitStories {
 
@@ -27,8 +27,7 @@ public class RestResourceStories extends JUnitStories {
 
 	@Override
 	public List<CandidateSteps> candidateSteps() {
-		return new InstanceStepsFactory(configuration(), new RestResourceSteps(), new BenefitsResourceSteps(), new OffersResourceSteps(),
-				new CodesResourceSteps()).createCandidateSteps();
+		return new InstanceStepsFactory(configuration(), new RestResourceSteps(), new BenefitsResourceSteps()).createCandidateSteps();
 	}
 
 	@Override
