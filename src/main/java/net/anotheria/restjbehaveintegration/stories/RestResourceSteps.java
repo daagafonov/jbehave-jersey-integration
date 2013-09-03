@@ -64,7 +64,7 @@ public class RestResourceSteps {
 	@BeforeStories
 	public void beforeStories() throws Exception {
 		final DefaultClientConfig config = new DefaultClientConfig();
-		config.getClasses().add(JacksonJsonProvider.class);
+//		config.getClasses().add(JacksonJsonProvider.class);
 		client = Client.create(config);
 		client.addFilter(new LoggingFilter());
 	}

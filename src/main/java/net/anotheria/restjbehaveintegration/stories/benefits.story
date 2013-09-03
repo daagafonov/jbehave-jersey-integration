@@ -1,6 +1,6 @@
 Meta:
 
-@author dmytro agafonov
+@author daagafonov@gmail.com
 @server http://localhost:8080
 
 Scenario:  Create a new UNIQUE_CODE benefit
@@ -11,7 +11,7 @@ And I set base path
 When I send a POST request on "/admin/benefits/createBenefit" with body:
 {
   "image": "http://www.google.de",
-  "imageTeaser": "http://www.cellular.de",
+  "imageTeaser": "http://www.google.de",
   "author": "author",
   "headline": {
     "de": "headlineDE",
@@ -44,7 +44,7 @@ And the JSON node "success" should be equal to "true"
 And the JSON node "results.benefit.id" should exists
 And I remember JSON node "results.benefit.id" as "benefitId"
 And the JSON node "results.benefit.image" should be equal to "http://www.google.de"
-And the JSON node "results.benefit.imageTeaser" should be equal to "http://www.cellular.de"
+And the JSON node "results.benefit.imageTeaser" should be equal to "http://www.google.de"
 And the JSON node "results.benefit.author" should be equal to "author"
 And the JSON node "results.benefit.headline.de" should be equal to "headlineDE"
 And the JSON node "results.benefit.headline.en" should be equal to "headlineEN"

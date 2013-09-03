@@ -16,7 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j-version>1.7.5</slf4j-version>
 		<jersey-version>1.17.1</jersey-version>
-		<jbehave-version>3.6.9</jbehave-version>
+		<jbehave-version>3.8</jbehave-version>
 	</properties>
 
 	<build>
@@ -26,6 +26,12 @@
 		<resources>
 			<resource>
 				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
 			</resource>
 		</resources>
 		<testResources>
@@ -49,10 +55,36 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>net.anotheria.restjbehaveintegration.stories.RestResourceStories</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-my-jar-with-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		
 	</build>
 
 
-	<profiles>
+	<!-- <profiles>
 		<profile>
 			<id>test-with-jbehave</id>
 			<activation>
@@ -60,47 +92,6 @@
 			</activation>
 			<build>
 				<plugins>
-					<!-- 
-					<plugin>
-						<groupId>org.mortbay.jetty</groupId>
-						<artifactId>maven-jetty-plugin</artifactId>
-						<version>6.1.14</version>
-						<configuration>
-							<scanIntervalSeconds>10</scanIntervalSeconds>
-							<contextPath>/</contextPath>
-							<connectors>
-								<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-									<port>8088</port>
-									<maxIdleTime>60000</maxIdleTime>
-								</connector>
-							</connectors>
-							<webXml>${basedir}/etc/web.xml</webXml>
-							<systemProperties>
-								<systemProperty>
-									<name>configureme.defaultEnvironment</name>
-									<value>test_jbehave</value>
-								</systemProperty>
-							</systemProperties>
-							<daemon>true</daemon>
-							<requestLog implementation="org.mortbay.jetty.NCSARequestLog">
-								<filename>${basedir}/target/yyyy_mm_dd.request.log</filename>
-								<retainDays>90</retainDays>
-								<append>true</append>
-								<extended>true</extended>
-								<logTimeZone>GMT</logTimeZone>
-							</requestLog>
-						</configuration>
-						<executions>
-							<execution>
-								<id>run-stories-as-embeddables</id>
-								<phase>integration-test</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					 -->
 					<plugin>
 						<groupId>org.jbehave</groupId>
 						<artifactId>jbehave-maven-plugin</artifactId>
@@ -145,7 +136,7 @@
 			</build>
 		</profile>
 
-	</profiles>
+	</profiles> -->
 	
 	<dependencyManagement>
 		<dependencies>
@@ -222,6 +213,28 @@
 			<groupId>com.sun.jersey.contribs</groupId>
 			<artifactId>jersey-multipart</artifactId>
 		</dependency>
+		
+		<!-- <dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jettison</groupId>
+			<artifactId>jettison</artifactId>
+			<version>1.1</version>
+		</dependency> -->
+		
 	</dependencies>
 
 
